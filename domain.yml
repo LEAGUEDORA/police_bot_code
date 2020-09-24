@@ -1,0 +1,125 @@
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- greet
+- goodbye
+- registration
+- name_entry
+- ps_entry
+- start
+- dist_entry
+- ask_police_station
+- cancel
+- category_entry
+- otp_entry
+
+
+entities:
+- name
+- ps
+- dist
+- confirm
+- aadhar
+- number
+- otp
+- details
+- category
+
+slots:
+  aadhar:
+    type: unfeaturized
+  confirm:
+    type: unfeaturized
+  details:
+    type: unfeaturized
+  dist:
+    type: unfeaturized
+  name:
+    type: unfeaturized
+  number:
+    type: unfeaturized
+  otp:
+    type: unfeaturized
+  ps:
+    type: unfeaturized
+  category:
+    type: unfeaturized
+responses:
+  utter_say_slots:
+  - text: "So the summary is\n - name: {name}\n - ps: {ps}"
+  utter_i_can_help:
+  - text: I can Help you finding the police station in your district.
+  utter_ask_name:
+  - text: Please say the accused name
+  utter_ask_ps:
+  - text: In which police staion you want to file
+  utter_ask_confirm:
+  - text: "Do you want to confirm your complaint details.\n !!!!!!Warning!!!!!!\n\
+      \ It cannot be undone. Be careful and respond"
+  utter_say_need:
+  - text: To register a complaint, you need to give me your Aadhar Number and Phone
+      Number
+  utter_ask_aadhar:
+  - text: "Enter your Aadhar Number.\n Since this is under develeopment enter some\
+      \ random aadhar number (fake)"
+  utter_ask_number:
+  - text: "Please enter your Mobile number to recieve OTP.\n (Enter your original\
+      \ number. Data will not be stored. Don't worry)"
+  utter_ask_otp:
+  - text: Enter a 6 digit otp sent to the given above.
+  utter_say_name:
+  - text: You filed a complaint across {name}
+  utter_say_ps:
+  - text: registered in {ps} police station
+  utter_ask_dist:
+  - text: Please give me the 'District' of the police station
+  utter_saying_ido:
+  - text: I think you got the valuable information from me. :) I can even register
+      a complaint in the ps.
+
+  utter_say_cat:
+  - text: U filed a case with category {category}
+    
+  utter_ask_category:
+  - text: Select one of the category
+    buttons:
+      - payload: /category_entry{"category":"Harrasment"}
+        title: "Harrasment"
+      - payload: /category_entry{"category":"Eve-Teasing"}
+        title: "Eve-teasing"
+      - payload: /category_entry{"category":"Kidnap"}
+        title: "Kidnap"
+      - payload: /category_entry{"category":"Witch-case"}
+        title: "Witch-case"
+      - payload: /category_entry{"category":"Attemot To Murder"}
+        title: "Attempt to Murder"
+      - payload: /category_entry{"category":"Robery"}
+        title: "Robery"
+      - payload: /category_entry{"category":"Attack"}
+        title: "Attack"
+      - payload: /category_entry{"category":"Other"}
+        title: "Other"
+    
+    
+  utter_ask_details:
+  - text: Please say me summary of the complaint.
+  utter_again:
+  - text: Thank you for using me. Please visit me again.
+  utter_greet:
+  - text: "Hi. I'm Hasa. I am a police bot. I can help you \n - In registring a complaint\n\
+      \ - Giving you the police station details\n - Helping you to check your old\
+      \ complaints"
+  utter_registration:
+  - text: "Welcome to the registration section.\n Please dont use this for fake cases.\
+      \ You will be identified and a case will be automatically filed.\n To have users\
+      \ security you cannot withdraw the complaint procedure.\n You have an option\
+      \ at the end to withodraw your complaint.\n But you complaint is saved as draft\
+      \ in our data base and no further action will be taken.\n So let's get started."
+  utter_goodbye:
+  - text: Bye
+forms:
+- registration_form
+- form_fill_dist
+- form_finding_ps
+- form_aadhar
